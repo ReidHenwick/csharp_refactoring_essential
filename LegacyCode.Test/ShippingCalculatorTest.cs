@@ -23,7 +23,7 @@ public sealed class ShippingCalculatorTest
 
         var shippingCalculator = new ShippingCalculator();
 
-        var result = shippingCalculator.CalculateCost(input);
+        var result = shippingCalculator.CalculateShipping(input);
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result, Is.EqualTo(expectedCost));
@@ -34,6 +34,6 @@ public sealed class ShippingCalculatorTest
     {
         var shippingCalculator = new ShippingCalculator();
 
-        Assert.That(() => shippingCalculator.CalculateCost(null), Throws.InstanceOf<Exception>());
+        Assert.That(() => shippingCalculator.CalculateShipping(null), Throws.InstanceOf<Exception>());
     }
 }
