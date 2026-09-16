@@ -45,14 +45,21 @@ public class Order
             discount = subtotal * 0.05;
         }
 
+        var taxableAmount = subtotal - discount;
+
         // Tax calculation
-        double taxableAmount = subtotal - discount;
-        double tax = taxableAmount * 0.20;
+        var tax = CalculateTax(taxableAmount);
 
         // Total calculation
         double total = taxableAmount + tax;
 
         return new OrderSummary(subtotal, discount, tax, total);
+    }
+
+    private static double CalculateTax(double taxableAmount)
+    {
+        var tax = taxableAmount * 0.20;
+        return tax;
     }
 }
 
