@@ -8,18 +8,18 @@ public class X1Test
     [Test]
     public void T1()
     {
-        int a = 7;
-        int b = 12;
+        int startRange = 7;
+        int endRange = 12;
 
         // Expected: sum of squares from 7 to 12
-        int expected = 0;
-        for (int i = a; i <= b; i++)
+        int expectedSumOfSquares = 0;
+        for (int i = startRange; i <= endRange; i++)
         {
-            expected += i * i;
+            expectedSumOfSquares += i * i;
         }
 
-        int actual = X1.M(a, b);
+        int actualSumOfSquares = X1.M(startRange, endRange);
 
-        Assert.That(actual, Is.EqualTo(expected));
+        Assert.That(actualSumOfSquares, Is.EqualTo(expectedSumOfSquares));
     }
 }
