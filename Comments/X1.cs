@@ -2,24 +2,22 @@
 
 public class X1
 {
-    public static int M(int q, int z)
+    public static int M(int startRange, int endRange)
     {
-        int p = 0;
+        int runningTotal = 0;
 
-        // Iterate from lower bound (q) to upper bound (z)
-        for (int i = q; i <= z; i++)
+        // Iterate from lower bound (startRange) to upper bound (endRange)
+        for (int i = startRange; i <= endRange; i++)
         {
             // Add square of each number in the range
-            p += N(i);
+            runningTotal += CalculateSquare(i);
         }
 
-        // Return accumulated sum
-        return p;
+        return runningTotal;
     }
 
-    static int N(int k)
+    static int CalculateSquare(int input)
     {
-        // Return square of input
-        return k * k;
+        return input * input;
     }
 }
