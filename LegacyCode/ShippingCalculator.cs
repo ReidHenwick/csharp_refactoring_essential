@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-public class Order
+public class OrderDto
 {
     public int OrderId { get; set; }
     public string ShippingType { get; set; }
@@ -40,32 +40,37 @@ public class ShippingCalculator
             {
                 PropertyNameCaseInsensitive = true
             };
-            
-            var order = JsonSerializer.Deserialize<Order>(json, options);
 
-            if (order == null)
-                throw new Exception("Failed to deserialize order");
-            
-            switch (order.ShippingType)
-            {
-                case "STANDARD":
-                    return order.WeightKg * 0.5;
+            var order = JsonSerializer.Deserialize<OrderDto>(json, options);
 
-                case "EXPRESS":
-                    return order.WeightKg * 0.8
-                           + order.DistanceKm * 0.1;
-
-                case "OVERNIGHT":
-                    return order.WeightKg * 1.2 + 25;
-
-                default:
-                    throw new Exception($"Unknown shipping type: {order.ShippingType}");
-            }
+            return CalculateCost(order);
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             return -1;
+        }
+    }
+
+    public double CalculateCost(OrderDto? order)
+    {
+        if (order == null)
+            throw new Exception("Failed to deserialize order");
+
+        switch (order.ShippingType)
+        {
+            case "STANDARD":
+                return order.WeightKg * 0.5;
+
+            case "EXPRESS":
+                return order.WeightKg * 0.8
+                       + order.DistanceKm * 0.1;
+
+            case "OVERNIGHT":
+                return order.WeightKg * 1.2 + 25;
+
+            default:
+                throw new Exception($"Unknown shipping type: {order.ShippingType}");
         }
     }
 }

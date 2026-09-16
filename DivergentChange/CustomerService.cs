@@ -5,18 +5,6 @@ using System.Text.RegularExpressions;
 
 public class CustomerService
 {
-    public bool IsValidEmail(string email)
-    {
-        if (email == null)
-        {
-            return false;
-        }
-
-        return Regex.IsMatch(
-            email,
-            @"^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
-    }
-
     public string FormatDisplayName(string firstName, string lastName)
     {
         return firstName.Trim() + " " + lastName.Trim().ToUpper();

@@ -8,52 +8,6 @@ public class CustomerServiceTest
     private readonly CustomerService service = new CustomerService();
 
     // -------------------------
-    // isValidEmail tests
-    // -------------------------
-
-    [Test]
-    public void IsValidEmail_shouldReturnFalse_whenEmailIsNull()
-    {
-        Assert.IsFalse(service.IsValidEmail(null));
-    }
-
-    [Test]
-    public void IsValidEmail_shouldReturnFalse_whenEmailIsEmpty()
-    {
-        Assert.IsFalse(service.IsValidEmail(""));
-    }
-
-    [Test]
-    public void IsValidEmail_shouldReturnFalse_whenMissingAtSymbol()
-    {
-        Assert.IsFalse(service.IsValidEmail("invalid.email.com"));
-    }
-
-    [Test]
-    public void IsValidEmail_shouldReturnFalse_whenMissingLocalPart()
-    {
-        Assert.IsFalse(service.IsValidEmail("@domain.com"));
-    }
-
-    [Test]
-    public void IsValidEmail_shouldReturnFalse_whenMissingDomain()
-    {
-        Assert.IsFalse(service.IsValidEmail("user@"));
-    }
-
-    [Test]
-    public void IsValidEmail_shouldReturnTrue_whenEmailIsValid()
-    {
-        Assert.IsTrue(service.IsValidEmail("user.name+tag@example.com"));
-    }
-
-    [Test]
-    public void IsValidEmail_shouldReturnTrue_whenSimpleValidEmail()
-    {
-        Assert.IsTrue(service.IsValidEmail("user@example.com"));
-    }
-
-    // -------------------------
     // formatDisplayName tests
     // -------------------------
 
