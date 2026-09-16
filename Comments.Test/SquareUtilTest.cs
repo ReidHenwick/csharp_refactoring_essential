@@ -3,7 +3,7 @@
 using NUnit.Framework;
 
 [TestFixture]
-public class X1Test
+public class SquareUtilTest
 {
     [Test]
     public void CalculatingSumOfSquaresGivenRangeCalculatesSumOfSquares()
@@ -26,7 +26,7 @@ public class X1Test
             startRange,
             endRange);
 
-        int actualSumOfSquares = X1.M(startRange, endRange);
+        int actualSumOfSquares = SquareUtil.SumOfSquares(startRange, endRange);
 
         Assert.That(
             actualSumOfSquares,
